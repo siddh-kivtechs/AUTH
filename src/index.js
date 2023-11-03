@@ -17,7 +17,7 @@ const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUri, supabaseKey);
 
 
-async function baseHandler(req, res) {
+function baseHandler(req, res) {
   const requestBody = req.body;
   const message = {};
   let decodedEmail;
