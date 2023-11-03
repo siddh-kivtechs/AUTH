@@ -26,25 +26,29 @@ async function baseHandler(req, res)
 {
   decoded_email = CryptoJS.enc.Base64.parse(requestBody["email"]).toString(CryptoJS.enc.Utf8);
     console.log('Decoded Email:'+decoded_email);
-if (requestBody["email"] && requestBody["password"]   && decoded_email === "admin@kivtechs.cloud") {
+if (requestBody["email"] && requestBody["password"]   && decoded_email === "admin@kivtechs.cloud")
+{
   message.auth = "auth success";
   message.next_uri = "https://kivtechs.cloud/dashboard/admin";
     res.json(message);
 } 
-    else if (requestBody["email"] && requestBody["password"] && decoded_email === "kaushik@kivtechs.cloud") {
+    else if (requestBody["email"] && requestBody["password"] && decoded_email === "kaushik@kivtechs.cloud") 
+    {
   message.auth = "auth success";
   message.next_uri = "https://kivtechs.cloud/dashboard/kaushik";
     console.log('Kaushik Login');
  
 } 
-  else if (requestBody["email"] && requestBody["password"] && decoded_email === "sohini@kivtechs.cloud") {
+  else if (requestBody["email"] && requestBody["password"] && decoded_email === "sohini@kivtechs.cloud")
+  {
   message.auth = "auth success";
   message.next_uri = "https://kivtechs.cloud/dashboard/sohini";
 
         res.json(message);
 } 
   
-  else if (requestBody["email"] && requestBody["password"]) {
+  else if (requestBody["email"] && requestBody["password"]) 
+  {
   message.auth = "auth success";
   message.next_uri = "https://kivtechs.cloud/dashboard/user";
 
@@ -56,7 +60,7 @@ if (requestBody["email"] && requestBody["password"]   && decoded_email === "admi
   message.next_uri = "#";
    res.json(message);
 }
-}
+
 else {
   message.auth = "auth failed";
   message.next_uri = "#";
@@ -65,7 +69,7 @@ else {
 
     
   // res.send({auth:"auth success",next_uri: "https://kivtechs.cloud/dashboard/user"});
-});
+}
 
 
 app.use(cors());
