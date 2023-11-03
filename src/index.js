@@ -5,11 +5,11 @@ import { createClient } from "@supabase/supabase-js";
 import { ulid } from 'ulid';
 import CryptoJS from 'crypto-js';
 
-const app = express();
-app.use(cors());
+
+
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+app.use(cors());
 app.all("*", (req, res) => {
 //   const message={
 //          
