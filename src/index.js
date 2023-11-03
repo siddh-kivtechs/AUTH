@@ -1,14 +1,18 @@
-// In src/index.js
+
 const express = require("express");
 
-
+app.use(cors());
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// *** REMOVE ***
-app.get("/", (req, res) => {
-  res.send("<h2>It's Working!</h2>");
+app.all("*", (req, res) => {
+  let message={};
+   message.auth = "auth success";
+  message.next_uri = "https://kivtechs.cloud/dashboard/user";
+      console.log(user login);
+    res.json(message);
 });
+
 
 
 app.listen(PORT, () => {
