@@ -15,9 +15,18 @@ const auth = "authentication";
 const supabaseUri = process.env.SUPABASE_URI;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUri, supabaseKey);
+
+
 async verify_user(data)
 {
+    const requestBody;
     const message = {};
+    if (data["email"]) 
+   {
+    decodedEmail = CryptoJS.enc.Base64.parse(requestBody["email"]).toString(CryptoJS.enc.Utf8);
+    console.log(`Decoded Email: ${decodedEmail}`)
+       
+  }
   // Check if the email and password are both present.
   if (requestBody["email"] && requestBody["password"]) 
   {
@@ -53,15 +62,7 @@ async verify_user(data)
   message.nextUri = "#";
   res.json(message);
 }
-async decrypt_email(data)
-{
-if (data["email"]) 
-   {
-    decodedEmail = CryptoJS.enc.Base64.parse(requestBody["email"]).toString(CryptoJS.enc.Utf8);
-    console.log(`Decoded Email: ${decodedEmail}`);
-     return decodedEmail;
-  }
-}
+
 async function verify_data(data)
 {
    // If the email or password is not present or undefined, do nothing.
@@ -70,8 +71,8 @@ async function verify_data(data)
   }
   else 
   {
-      let decodedEmail=decrypt_email(data);
-   return verify_user(decodedEmail);
+    
+   return verify_user(data);
     
   }
 }
