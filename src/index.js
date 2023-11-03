@@ -17,59 +17,50 @@ const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUri, supabaseKey);
 
 
-async function baseHandler(req, res)
-  {
-    let requestBody = req.body;
-    let message = {};
-    let decoded_email;
-    if (requestBody["email"]) 
-{
-  decoded_email = CryptoJS.enc.Base64.parse(requestBody["email"]).toString(CryptoJS.enc.Utf8);
-    console.log('Decoded Email:'+decoded_email);
-if (requestBody["email"] && requestBody["password"]   && decoded_email === "admin@kivtechs.cloud")
-{
-  message.auth = "auth success";
-  message.next_uri = "https://kivtechs.cloud/dashboard/admin";
-    res.json(message);
-} 
-    else if (requestBody["email"] && requestBody["password"] && decoded_email === "kaushik@kivtechs.cloud") 
-    {
-  message.auth = "auth success";
-  message.next_uri = "https://kivtechs.cloud/dashboard/kaushik";
-    console.log('Kaushik Login');
- 
-} 
-  else if (requestBody["email"] && requestBody["password"] && decoded_email === "sohini@kivtechs.cloud")
-  {
-  message.auth = "auth success";
-  message.next_uri = "https://kivtechs.cloud/dashboard/sohini";
+async function baseHandler(req, res) {
+  const requestBody = req.body;
+  const message = {};
+  let decodedEmail;
 
-        res.json(message);
-} 
-  
-  else if (requestBody["email"] && requestBody["password"]) 
-  {
-  message.auth = "auth success";
-  message.next_uri = "https://kivtechs.cloud/dashboard/user";
+  if (requestBody["email"]) {
+    decodedEmail = CryptoJS.enc.Base64.parse(requestBody["email"]).toString(CryptoJS.enc.Utf8);
+    console.log(`Decoded Email: ${decodedEmail}`);
+  }
 
-    res.json(message);
-} 
+  // Check if the email and password are both present.
+  if (requestBody["email"] && requestBody["password"]) {
+    // Check if the email is admin or user.
+    if (decodedEmail === "admin@kivtechs.cloud") {
+      message.auth = "auth success";
+      message.nextUri = "https://kivtechs.cloud/dashboard/admin";
+      res.json(message);
+      return;
+    } else if (decodedEmail === "kaushik@kivtechs.cloud") {
+      console.log("Kaushik Login");
+      message.auth = "auth success";
+      message.nextUri = "https://kivtechs.cloud/dashboard/kaushik";
+      res.json(message);
+      return;
+    } else if (decodedEmail === "sohini@kivtechs.cloud") {
+      message.auth = "auth success";
+      message.nextUri = "https://kivtechs.cloud/dashboard/sohini";
+      res.json(message);
+      return;
+    } else {
+      // Default to user dashboard.
+      message.auth = "auth success";
+      message.nextUri = "https://kivtechs.cloud/dashboard/user";
+      res.json(message);
+      return;
+    }
+  }
 
-  else {
+  // If the email or password is missing, send an auth failed response.
   message.auth = "auth failed";
-  message.next_uri = "#";
-   res.json(message);
-}
-
-else {
-  message.auth = "auth failed";
-  message.next_uri = "#";
+  message.nextUri = "#";
   res.json(message);
 }
 
-    
-  // res.send({auth:"auth success",next_uri: "https://kivtechs.cloud/dashboard/user"});
-}
 
 
 app.use(cors());
