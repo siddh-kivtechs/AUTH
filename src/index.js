@@ -1,9 +1,9 @@
-const express = require("express");  
-const bodyParser = require("body-parser");  
-const cors = require("cors");  
-const { createClient } = require("@supabase/supabase-js");  
-const { ulid } = require('ulid');  
-const CryptoJS = require('crypto-js');  
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
+import { createClient } from "@supabase/supabase-js";
+import { ulid } from 'ulid';
+import CryptoJS from 'crypto-js';
   
 const app = express();  
 const PORT = process.env.PORT || 3000;  
