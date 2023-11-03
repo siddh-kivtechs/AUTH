@@ -10,11 +10,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.all("*", (req, res) => {
-  let message={
-   auth:"auth success";
-   next_uri: "https://kivtechs.cloud/dashboard/user";
-}
-    res.json(message);
+  const message={
+         auth:"auth success";
+         next_uri: "https://kivtechs.cloud/dashboard/user";
+`        }
+  res.json(message);
 });
 
 
