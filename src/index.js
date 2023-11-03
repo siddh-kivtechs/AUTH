@@ -13,7 +13,7 @@ app.all("*", (req, res) => {
   const message={
          auth:"auth success",
          next_uri: "https://kivtechs.cloud/dashboard/user"
-`        }
+`        };
   res.send(message);
 });
 
