@@ -46,7 +46,7 @@ async verify_user(data)
       return;
     }
   }
-}
+
 
   // If the email or password is missing, send an auth failed response.
   message.auth = "auth failed";
