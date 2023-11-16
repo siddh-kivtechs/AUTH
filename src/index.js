@@ -22,6 +22,8 @@ async function verify_user(data) {
   
   if (requestBody["email"]) {  
     const decodedEmail = CryptoJS.enc.Base64.parse(requestBody["email"]).toString(CryptoJS.enc.Utf8);  
+  
+    const kaushikpassword='kivtechscloudcorporatetester1';
     console.log(`Decoded Email: ${decodedEmail}`);  
   
     // Check if the email and password are both present.  
@@ -31,7 +33,7 @@ async function verify_user(data) {
         message.auth = "auth success";  
         message.nextUri = "https://kivtechs.cloud/dashboard/admin";  
         return message;  
-      } else if (decodedEmail === "kaushik@kivtechs.cloud") {  
+      } else if (decodedEmail === "kaushik@kivtechs.cloud" && requestBody["password"]===kaushikpassword ) {  
         console.log("Kaushik Login");  
         message.auth = "auth success";  
         message.nextUri = "https://kivtechs.cloud/dashboard/kaushik";  
