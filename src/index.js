@@ -33,7 +33,7 @@ async function verify_user(data) {
         message.auth = "auth success";  
         message.nextUri = "https://kivtechs.cloud/dashboard/admin";  
         return message;  
-      } else if (decodedEmail === "kaushik@kivtechs.cloud" && requestBody["password"]===kaushikpassword ) {  
+      } else if (decodedEmail === "kaushik@kivtechs.cloud") {  
         console.log("Kaushik Login");  
         message.auth = "auth success";  
         message.nextUri = "https://kivtechs.cloud/dashboard/kaushik";  
