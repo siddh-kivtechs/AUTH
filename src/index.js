@@ -33,7 +33,7 @@ async function verify_user(data) {
         message.auth = "auth success";  
         message.nextUri = "https://kivtechs.cloud/dashboard/admin";  
         return message;  
-      } else if (decodedEmail === "kaushik@kivtechs.cloud") {  
+      } else if (decodedEmail === "kaushik@kivtechs.cloud"  || decodedEmail === "contact@kneoginigmisarch.co.in" ) {  
         console.log("Kaushik Login");  
         message.auth = "auth success";  
         message.nextUri = "https://kivtechs.cloud/dashboard/kaushik";  
@@ -44,8 +44,8 @@ async function verify_user(data) {
         return message;  
       } else {  
         // Default to user dashboard.  
-        message.auth = "auth success";  
-        message.nextUri = "https://kivtechs.cloud/dashboard/user";  
+        message.auth = "auth failed";  
+        message.nextUri = "";  
         return message;  
       }  
     }  
