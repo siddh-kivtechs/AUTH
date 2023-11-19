@@ -31,16 +31,16 @@ async function verify_user(data) {
       // Check if the email is admin or user.  
       if (decodedEmail === "admin@kivtechs.cloud") {  
         message.auth = "auth success";  
-        message.nextUri = "https://kivtechs.cloud/dashboard/admin";  
+        message.nextUri = "https://kivtechs.cloud/admin/dash";  
         return message;  
       } else if (decodedEmail === "kaushik@kivtechs.cloud"  || decodedEmail === "contact@kneoginigmisarch.co.in" ) {  
         console.log("Kaushik Login");  
         message.auth = "auth success";  
-        message.nextUri = "https://kivtechs.cloud/dashboard/kaushik";  
+        message.nextUri = "https://kivtechs.cloud/admin/dash";  
         return message;  
       } else if (decodedEmail === "sohini@kivtechs.cloud") {  
         message.auth = "auth success";  
-        message.nextUri = "https://kivtechs.cloud/dashboard/sohini";  
+        message.nextUri = "https://kivtechs.cloud/admin/dash";  
         return message;  
       } else {  
         // Default to user dashboard.  
